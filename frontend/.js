@@ -17,14 +17,16 @@ const form =document.querySelector('form');
 form.textContent='\n'+ JSON.stringify(objecty,'\t',2);
 displayLoggedExercises();
 }
+
+ 
 function displayLoggedExercises() {
-  // Get the container element where the logged exercises will be displayed
+  
   const exerciseListContainer = document.getElementById('Exercise-Form');
 
-  // Clear any existing exercise list
+  //clearing list
   exerciseListContainer.innerHTML = '';
 
-  // Iterate over the array or object to create and append exercise elements
+  // Iterate over the a objecty(arr) to create and append object elements
   objecty.forEach((object, index) => {
     // Create a new list item element for each exercise
     const exerciseItem = document.createElement('li');

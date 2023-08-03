@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fit Hit</title>
-    <link rel="stylesheet" href="style.css"> 
-    <!-- <script src=" .js"></script> -->
+    <meta charset="UTF-8"><!-- <script src=" .js"></script> -->
 <script>
-    // const objects=[];
+   
          var Exercisearr=[];
               function validform(){
          const Exercise=document.getElementById('Exercise').value;
@@ -32,7 +28,8 @@ Exercisearr=forEach((exercise) => {
    Exercisearr.push(exerciseName);
     displaylistofexercise();
     }
-     const objecty=[];
+   
+   const objecty=[];
     function handleFormSubmission(event) {
    
         event.preventDefault();//prevent from auto-submission
@@ -54,7 +51,38 @@ Exercisearr=forEach((exercise) => {
  document.addEventListener('DOMContentLoaded', ()=>{
    document.getElementById('Exercise-Form').addEventListener('submit',handleFormSubmission);
    });
+// Make a GET request to retrieve exercises
+fetch('http://localhost:5000/exercises')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      // Handle the retrieved exercises data
+    })
+    .catch((error) => {
+      console.error('Failed to retrieve exercises:', error);
+    });
+    const exerciseData = {
+    name: 'Push-ups',
+    duration: 10,
+    calories: 50,
+  };
 
+  // Make a POST request to create a new exercise
+  fetch('http://localhost:5000/exercises', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(exerciseData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      // Handle the response data
+    })
+    .catch((error) => {
+      console.error('Failed to create exercise:', error);
+    });
 </script>
 </head>
 <style type="text/css">
