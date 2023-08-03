@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Hit</title>
+    <link rel="stylesheet" href="style.css"> 
+    <!-- <script src=" .js"></script> -->
+<script>
+    // const objects=[];
+         var Exercisearr=[];
+              function validform(){
+         const Exercise=document.getElementById('Exercise').value;
+            const Sets=document.getElementById('Sets').value;
+            const Reps=document.getElementById('Reps').value;
+ if( Exercise==='' || Sets==='' || Reps===''){
+    // i.e there type cannot be equal exercise is char while sets & reps are int
+    alert('Please fill ');
+    return false;
+ }
+    }
+    function exerciselist(){
+        const exerclistContainer=document.getElementById('ExerciseList');
+//clear existing list
+exerlistContainer.innerHTML='';
+//generate list items
+Exercisearr=forEach((exercise) => {
+    const listofexercise=document.createElement('li');
+    listofexercise.textContent=exercise;
+    exerclistContainer.appendChild(listofexercise);
+   });
+   Exercisearr.push(exerciseName);
+    displaylistofexercise();
+    }
+     const objecty=[];
+    function handleFormSubmission(event) {
+   
+        event.preventDefault();//prevent from auto-submission
+
+    //creating object and storing form data
+   const object={
+
+    Exercise:document.getElementById('Exercise').value,
+   Sets:document.getElementById('Sets').value  ,
+     Reps:document.getElementById('Reps').value
+   }
+   objecty.push(object);
+   document.querySelector('form').reset();
+   console.log('added',objecty);//for display
+   const form =document.querySelector('form');
+   form.textContent='\n'+ JSON.stringify(objecty,'\t',2);
+   }
+ const exerciseForm = document.getElementById('Exercise-Form');
+ document.addEventListener('DOMContentLoaded', ()=>{
+   document.getElementById('Exercise-Form').addEventListener('submit',handleFormSubmission);
+   });
+
+</script>
+</head>
+<style type="text/css">
+    body{
+        background-image: url("bg image.jpg");
+        background-size: 800px;
+        
+        /* background-repeat: no-repeat; */
+    }
+</style>
+  
+<body>
+
+     <form onsubmit="validform()" id="Exercise-Form"> 
+        
+        <div>
+            
+         <ul id="ExerciseList"></ul>
+            <label for="Exercise"> 
+                <strong> Exercise:</strong>
+                <input type="text" name="Exercise" id="Exercise" placeholder=" Exercise Name" required> 
+        <!-- id is used to apply changes **if we dont use id if we change 1 i/p 
+            all i/p will be changed and we dont want that -->
+            
+            </label>
+            <label for="Sets"> 
+                <strong> Sets:</strong>
+                <input type="number" name="Sets" id="Sets" min="0" placeholder="Number of sets" required> 
+                
+            </label>
+            <label for="Reps"> 
+                <strong> Reps:</strong>
+                <input type="number" name="Reps" id="Reps" min="0" placeholder="Number of reps" required> 
+                </label>
+            </div>
+            <div>
+                <h2>Logged Exercises</h2>
+                <ul id="Exercise"></ul>
+              </div>
+            <button  type="submit" id="submit">Log Exercise</button>
+    </form>
+</body>
+</html>
